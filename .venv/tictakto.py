@@ -25,6 +25,7 @@ def Player_move(player, symbol=None):
     if symbol:
         return 'O' if symbol == 'X' else 'X'
 
+
         # print(f'Where you want Move dir Sir or Lady Or A Dog')
         # input(f'Tell Me from 1-9 when the 1 is to lower left and the 9 is upper right')
         # if (1):
@@ -35,9 +36,3 @@ print(f'Welcome to the most Exsiding TicTacToc Ever!! you playing for your Life!
 p1, p2 = Users()
 print(f'Lets Start The Game ')
 print(print_boadrd(board))
-# for player in player_list:
-#     print(Player_move())
-# if Player_move(player) == Player_move(player):
-#     print(f'Fuck You')
-
-print(f' {p1}')
