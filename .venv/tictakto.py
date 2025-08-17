@@ -21,18 +21,25 @@ def Users():
 
 
 
-def Player_move(player, symbol=None):
+def Player_Choose(player, symbol=None):
     if symbol:
         return 'O' if symbol == 'X' else 'X'
+    choice = input(f'{player}, Please choose X or O: ').upper()
+    while choice not in ('X', 'O'):
+        print(f'Dir {player} Please Choose X or O  cuz if you dont ill kill you')
+        choice = input(f'{player}, Please choose X or O: ').upper()
+    return choice
 
-
-        # print(f'Where you want Move dir Sir or Lady Or A Dog')
-        # input(f'Tell Me from 1-9 when the 1 is to lower left and the 9 is upper right')
-        # if (1):
-        #     print(print_boadrd(board[0, player_move]))
 
 
 print(f'Welcome to the most Exsiding TicTacToc Ever!! you playing for your Life!')
 p1, p2 = Users()
+p1_symbol = Player_Choose(p1)
+p2_symbol = Player_Choose(p2, p1_symbol)
+print(f'{p1} your symbol is {p1_symbol}')
+print(f'{p2} your symbol is {p2_symbol}')
+
 print(f'Lets Start The Game ')
-print(print_boadrd(board))
+
+
+# print_boadrd(board)
