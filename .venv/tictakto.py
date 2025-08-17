@@ -22,7 +22,6 @@ def Users():
     print(player_list)
 
 
-
 def Player_Choose(player, symbol=None):
     if symbol:
         return 'O' if symbol == 'X' else 'X'
@@ -56,34 +55,37 @@ def Player_move(player, symbol):
         else:
             print(f' Why are you doing this to you mama??? tell me why??? please choose other option')
 
+
 def check_win(board, symbol):
     wins = [
         # Lines
-        [(0,0),(0,1),(0,2)],
-        [(1,0),(1,1),(1,2)],
-        [(2,0),(2,1),(2,2)],
+        [(0, 0), (0, 1), (0, 2)],
+        [(1, 0), (1, 1), (1, 2)],
+        [(2, 0), (2, 1), (2, 2)],
         # raws
-        [(0,0),(1,0),(2,0)],
-        [(0,1),(1,1),(2,1)],
-        [(0,2),(1,2),(2,2)],
+        [(0, 0), (1, 0), (2, 0)],
+        [(0, 1), (1, 1), (2, 1)],
+        [(0, 2), (1, 2), (2, 2)],
         # alchson ze ason
-        [(0,0),(1,1),(2,2)],
-        [(0,2),(1,1),(2,0)],
+        [(0, 0), (1, 1), (2, 2)],
+        [(0, 2), (1, 1), (2, 0)],
     ]
     for triplet in wins:
         if all(board[r][c] == symbol for r, c in triplet):
             return True
     return False
 
+
 def board_full(board):
     return all(cell != '_' for row in board for cell in row)
 
+
 def Game_mechanics():
     result = None
-    while  result not in ('Wan', 'Tie'):
+    while result not in ('Wan', 'Tie'):
         for player, symbol in [(p1, p1_symbol), (p2, p2_symbol)]:
-            Player_move(player , symbol)
-            if check_win(board, symbol) :
+            Player_move(player, symbol)
+            if check_win(board, symbol):
                 print(f' {player} YOU WAN')
                 result = 'Wan'
                 break
@@ -91,8 +93,6 @@ def Game_mechanics():
                 print(f' next time losers')
                 result = 'Tie'
                 break
-
-
 
 
 print(f'Welcome to the most Exsiding TicTacToc Ever!! you playing for your Life!')
