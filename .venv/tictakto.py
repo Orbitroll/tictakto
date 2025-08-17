@@ -37,14 +37,49 @@ def Player_move(player, symbol):
             key, val = dict_board[choice]
             if board[key][val] != '_':
                 print(f' place taken , go home')
-            else:board[key][val] = symbol
-            print_boadrd(board)
+            else:
+                board[key][val] = symbol
+                print_boadrd(board)
+                return key, val
             break
         else:
             print(f' Why are you doing this to you mama??? tell me why??? please choose other option')
 
+def check_win(board, symbol):
+    wins = [
+        # Lines
+        [(0,0),(0,1),(0,2)],
+        [(1,0),(1,1),(1,2)],
+        [(2,0),(2,1),(2,2)],
+        # raws
+        [(0,0),(1,0),(2,0)],
+        [(0,1),(1,1),(2,1)],
+        [(0,2),(1,2),(2,2)],
+        # alchson ze ason
+        [(0,0),(1,1),(2,2)],
+        [(0,2),(1,1),(2,0)],
+    ]
+    for triplet in wins:
+        if all(board[r][c] == symbol for r, c in triplet):
+            return True
+    return False
+
+def board_full(board):
+    return all(cell != '_' for row in board for cell in row)
 
 def Game_mechanics():
+    result = None
+    while  result not in ('Wan', 'Tie'):
+        for player, symbol in [(p1, p1_symbol), (p2, p2_symbol)]:
+            Player_move(player , symbol)
+            if check_win(board, symbol) :
+                print(f' {player} YOU WAN')
+                result = 'Wan'
+            elif board_full(board):
+                print(f' next time losers')
+                result = 'Tie'
+
+
 
 
 print(f'Welcome to the most Exsiding TicTacToc Ever!! you playing for your Life!')
@@ -53,8 +88,8 @@ p1_symbol = Player_Choose(p1)
 p2_symbol = Player_Choose(p2, p1_symbol)
 print(f'{p1} your symbol is {p1_symbol}')
 print(f'{p2} your symbol is {p2_symbol}')
-
 print(f'Lets Start The Game ')
+Game_mechanics()
 
 
 # print_boadrd(board)
