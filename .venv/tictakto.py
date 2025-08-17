@@ -30,6 +30,21 @@ def Player_Choose(player, symbol=None):
         choice = input(f'{player}, Please choose X or O: ').upper()
     return choice
 
+def Player_move(player, symbol):
+    while True:
+        choice = int(input(f'{player}, Please select a Number between 1-9: '))
+        if choice in dict_board:
+            key, val = dict_board[choice]
+            if board[key][val] != '_':
+                print(f' place taken , go home')
+            else:board[key][val] = symbol
+            print_boadrd(board)
+            break
+        else:
+            print(f' Why are you doing this to you mama??? tell me why??? please choose other option')
+
+
+def Game_mechanics():
 
 
 print(f'Welcome to the most Exsiding TicTacToc Ever!! you playing for your Life!')
