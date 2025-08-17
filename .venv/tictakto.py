@@ -86,9 +86,11 @@ def Game_mechanics():
             if check_win(board, symbol) :
                 print(f' {player} YOU WAN')
                 result = 'Wan'
+                break
             elif board_full(board):
                 print(f' next time losers')
                 result = 'Tie'
+                break
 
 
 
