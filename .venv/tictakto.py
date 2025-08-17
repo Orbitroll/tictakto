@@ -36,7 +36,11 @@ def Player_move(player, symbol):
         if choice in dict_board:
             key, val = dict_board[choice]
             if board[key][val] != '_':
-                print(f' place taken , go home')
+                if choice in dict_board:
+                    key, val = dict_board[choice]
+                    if board[key][val] != '_':
+                        print(f' place taken , one more time')
+                        continue
             else:
                 board[key][val] = symbol
                 print_boadrd(board)
