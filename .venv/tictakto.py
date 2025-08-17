@@ -90,6 +90,3 @@ print(f'{p1} your symbol is {p1_symbol}')
 print(f'{p2} your symbol is {p2_symbol}')
 print(f'Lets Start The Game ')
 Game_mechanics()
-
-
-# print_boadrd(board)
