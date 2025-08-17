@@ -1,3 +1,5 @@
+from random import choice
+
 board = [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]
 dict_board = {1: [0, 0], 2: [0, 1], 3: [0, 2], 4: [1, 0], 5: [1, 1], 6: [1, 2], 7: [2, 0], 8: [2, 1], 9: [2, 2]}
 player_list = []
@@ -30,9 +32,14 @@ def Player_Choose(player, symbol=None):
         choice = input(f'{player}, Please choose X or O: ').upper()
     return choice
 
+
 def Player_move(player, symbol):
     while True:
-        choice = int(input(f'{player}, Please select a Number between 1-9: '))
+        try:
+            choice = int(input(f'{player}, Please select a Number between 1-9: '))
+        except ValueError:
+            print(f"Dont Use Letters YOU COUNT!")
+            continue
         if choice in dict_board:
             key, val = dict_board[choice]
             if board[key][val] != '_':
